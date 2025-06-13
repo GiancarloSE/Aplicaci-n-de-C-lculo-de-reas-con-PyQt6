@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>300</width><height>250</height></rect>
+  </property>
+  <property name="windowTitle"><string>Calculadora de Áreas</string></property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry"><rect><x>0</x><y>0</y><width>300</width><height>21</height></rect></property>
+   <widget class="QMenu" name="menuCalculo_de_Areas">
+    <property name="title"><string>Cálculo de Áreas</string></property>
+    <addaction name="actionCirculo"/>
+    <addaction name="actionTriangulo"/>
+    <addaction name="actionRectangulo"/>
+    <addaction name="actionCuadrado"/>
+   </widget>
+   <addaction name="menuCalculo_de_Areas"/>
+   <addaction name="actionSalir"/>
+  </widget>
+  <action name="actionCirculo">
+   <property name="text"><string>Circulo</string></property>
+   <property name="shortcut"><string>Ctrl+C</string></property>
+  </action>
+  <action name="actionTriangulo">
+   <property name="text"><string>Triangulo</string></property>
+  </action>
+  <action name="actionRectangulo">
+   <property name="text"><string>Rectangulo</string></property>
+  </action>
+  <action name="actionCuadrado">
+   <property name="text"><string>Cuadrado</string></property>
+  </action>
+  <action name="actionSalir">
+   <property name="text"><string>Salir</string></property>
+   <property name="shortcut"><string>Ctrl+Q</string></property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

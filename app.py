@@ -1,5 +1,10 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
+from PyQt6.QtWidgets import (
+    QApplication,
+    QMainWindow,
+    QInputDialog,
+    QMessageBox,
+)
 from src.vista.ui_main import Ui_MainWindow
 from src.logica.areas import Circulo, Triangulo, Rectangulo, Cuadrado
 
@@ -10,12 +15,36 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # Conectar acciones del menú
+        # Conexión de acciones de menú
         self.ui.actionSalir.triggered.connect(self.close)
+
+        # Submenú "Seleccionar Figura"
+        self.ui.actionSeleccionarFigura.triggered.connect(self.seleccionar_figura)
         self.ui.actionCirculo.triggered.connect(self.abrir_dialogo_circulo)
         self.ui.actionTriangulo.triggered.connect(self.abrir_dialogo_triangulo)
         self.ui.actionRectangulo.triggered.connect(self.abrir_dialogo_rectangulo)
         self.ui.actionCuadrado.triggered.connect(self.abrir_dialogo_cuadrado)
+
+    def seleccionar_figura(self):
+        """Permite seleccionar una figura desde un diálogo y abre su cálculo."""
+        opciones = ("Círculo", "Triángulo", "Rectángulo", "Cuadrado")
+        figura, ok = QInputDialog.getItem(
+            self,
+            "Seleccionar Figura",
+            "Selecciona una figura:",
+            opciones,
+            editable=False
+        )
+        if ok and figura:
+            if figura == "Círculo":
+                self.abrir_dialogo_circulo()
+            elif figura == "Triángulo":
+                self.abrir_dialogo_triangulo()
+            elif figura == "Rectángulo":
+                self.abrir_dialogo_rectangulo()
+            elif figura == "Cuadrado":
+                self.abrir_dialogo_cuadrado()
+
 
     def abrir_dialogo_circulo(self):
         radio, ok = QInputDialog.getDouble(self, "Círculo", "Radio:", min=0.0)
@@ -51,6 +80,6 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
+    ventana = MainWindow()
+    ventana.show()
     sys.exit(app.exec())
